@@ -3,12 +3,12 @@ project_name=`Jenkins2Docker`;
 echo $image_version;
 # cd Jenkins2Docker
 git pull --rebase origin master;
-docker stop $project_name;
-docker rm $project_name;
-docker build -t $project_name:$image_version .;
+docker stop Jenkins2Docker;
+docker rm Jenkins2Docker;
+docker build -t Jenkins2Docker:$image_version .;
 docker images;
-docker run -p 10000:80 -d --name $project_name $project_name:$image_version;
+docker run -p 10000:80 -d --name Jenkins2Docker Jenkins2Docker:$image_version;
 # -v ~/docker-data/house-web/appsettings.json:/app/appsettings.json -v ~/docker-data/house-web/NLogFile/:/app/NLogFile   --restart=always
-docker logs $project_name;
+docker logs Jenkins2Docker;
 #删除build过程中产生的镜像    #docker image prune -a -f
 docker rmi $(docker images -f "dangling=true" -q)
