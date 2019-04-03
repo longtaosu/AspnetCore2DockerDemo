@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  jenkins2docker:
+    image: ${DOCKER_REGISTRY}jenkins2docker
+    build:
+      context: .
+      dockerfile: Jenkins2Docker/Dockerfile

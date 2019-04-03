@@ -1,0 +1,19 @@
+services:
+  jenkins2docker:
+    build:
+      context: F:\10MyGithub\04Jenkins2Docker
+      dockerfile: Jenkins2Docker/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44321'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: jenkins2docker
+    ports:
+    - published: 65074
+      target: 80
+    - published: 44321
+      target: 443
+    volumes:
+    - C:\Users\Long\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Long\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
